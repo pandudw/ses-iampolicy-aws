@@ -1,0 +1,20 @@
+{
+    "Id": "ExampleAuthorizationPolicy",
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "AuthorizeIAMUser",
+            "Effect": "Allow",
+            "Action": [
+                "ses:SendEmail",
+                "ses:SendRawEmail"
+            ],
+            "Resource": "arn:aws:ses:[region]:[accountid]:identity/[name-email]@example.com",
+            "Condition": {
+                "StringEquals": {
+                    "aws:PrincipalArn": "arn:aws:iam::[accountid]:user/[user]"
+                }
+            }
+        }
+    ]
+}
